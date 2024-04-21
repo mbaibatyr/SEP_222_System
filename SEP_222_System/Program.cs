@@ -55,7 +55,8 @@ namespace SEP_222_System
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = process;
-            startInfo.WindowStyle = ProcessWindowStyle.Normal;            
+            startInfo.WindowStyle = ProcessWindowStyle.Normal;
+            startInfo
             var p = Process.Start(startInfo);
             p.PriorityClass = ProcessPriorityClass.Idle;
             return p.Id;
