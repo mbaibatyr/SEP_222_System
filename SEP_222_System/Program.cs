@@ -51,14 +51,15 @@ namespace SEP_222_System
             //p.WaitForExit();
         }
 
-        static int StartProcesses2(string process)
+        static int StartProcesses2(string process, int arg1)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = process;
-            startInfo.WindowStyle = ProcessWindowStyle.Normal;
-            startInfo
+            startInfo.Arguments = arg1.ToString();
+            startInfo.WindowStyle = ProcessWindowStyle.Normal;            
             var p = Process.Start(startInfo);
             p.PriorityClass = ProcessPriorityClass.Idle;
+            p.WaitForExit();
             return p.Id;
         }
         static void Main(string[] args)
@@ -66,7 +67,8 @@ namespace SEP_222_System
             //KillProcesses();
             //StartProcesses(new string[] { "chrome", @"C:\Program Files\Microsoft VS Code\Code.exe" });
             //StartProcesses("chrome", "notepad");
-            Console.WriteLine(StartProcesses2("chrome"));
+            Console.WriteLine(StartProcesses2(@"C:\Users\байбатыровм.STEP\source\repos\SEP_222_System\SecondProcess\bin\Debug\SecondProcess.exe", 
+                10));
 
 
         }
