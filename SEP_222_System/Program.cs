@@ -55,6 +55,8 @@ namespace SEP_222_System
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = process;
+            startInfo.CreateNoWindow = true;
+            startInfo.UseShellExecute = false;
             startInfo.Arguments = arg1.ToString();
             startInfo.WindowStyle = ProcessWindowStyle.Normal;            
             var p = Process.Start(startInfo);
