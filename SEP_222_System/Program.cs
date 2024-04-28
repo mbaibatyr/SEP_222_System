@@ -69,8 +69,8 @@ namespace SEP_222_System
             //KillProcesses();
             //StartProcesses(new string[] { "chrome", @"C:\Program Files\Microsoft VS Code\Code.exe" });
             //StartProcesses("chrome", "notepad");
-            Console.WriteLine(StartProcesses2(@"C:\Users\байбатыровм.STEP\source\repos\SEP_222_System\SecondProcess\bin\Debug\SecondProcess.exe", 
-                10));
+            //Console.WriteLine(StartProcesses2(@"C:\Users\байбатыровм.STEP\source\repos\SEP_222_System\SecondProcess\bin\Debug\SecondProcess.exe", 
+            //    10));
 
 
         }
