@@ -13,7 +13,12 @@ namespace MyConsole
 
         static void Main(string[] args)
         {
-            //Assembly assembly = Assembly.LoadFrom(@"C:\Temp\MyDLL.dll");
+            Assembly assembly = Assembly.LoadFrom(@"C:\Temp\MyDLL.dll");
+            foreach (var item in assembly.GetTypes().Where(z=>z.Namespace == "MyDLL"))
+            {
+                Console.WriteLine(item.FullName);
+            }
+            
             //var result = assembly.GetTypes().Where(z=>z.Name == "MyCLass").FirstOrDefault();
             //object myLink = Activator.CreateInstance(result);
             //var Sum = result.GetMethod("Sum");
@@ -23,8 +28,8 @@ namespace MyConsole
             //MyCLass my = new MyCLass();
             //var resultSum2 = my.Sum(1, 2);
 
-            StringBuilder sTitleBar = new StringBuilder(255);
-            MessageBox(IntPtr.Zero, "Hello STEP!", "Название", 0);
+            //StringBuilder sTitleBar = new StringBuilder(255);
+            //MessageBox(IntPtr.Zero, "Hello STEP!", "Название", 0);
 
         }
     }
