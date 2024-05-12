@@ -1,4 +1,7 @@
-﻿namespace MyTask
+﻿using Dapper;
+using System.Data.SqlClient;
+
+namespace MyTask
 {
     internal class Program
     {
@@ -12,19 +15,20 @@
         }
 
         static int Sum(int a, int b)
-        {
+        {            
             return a + b;
         }
         static void Main(string[] args)
-        {
-            int result = 0;
-            var task1 = new Task(() =>
-            {
-                result = Sum(10,20);
-            });
+        {            
+            var task1 = new Task<int>(() =>            
+                Sum(10,20)
+            );            
             task1.Start();
             task1.Wait();
-            Console.WriteLine(result);
+            Console.WriteLine(task1.Result);
+
+
+
             //Task.Run(() =>
             //{
             //    Test1();
