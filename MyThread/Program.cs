@@ -2,13 +2,33 @@
 {
     internal class Program
     {
+        static object MyLock = new();
+        //static Mutex mutexObj = new();
         static void Test1(object p)
         {
-            for (int i = 1; i <= int.Parse(p.ToString()); i++)
+            bool acquiredLock = false;
+            //mutexObj.WaitOne();
+            //lock (MyLock)
+            try
             {
-                Console.WriteLine(i.ToString() + " " + Thread.CurrentThread.Name);                
-                Thread.Sleep(200);
+                Monitor.Enter(MyLock, ref acquiredLock);
+                Monitor.Wait(MyLock, 200);                
+                for (int i = 1; i <= int.Parse(p.ToString()); i++)
+                {
+                    Console.WriteLine(i.ToString() + " " + Thread.CurrentThread.Name);
+                    Thread.Sleep(100);
+                }
             }
+            catch 
+            {
+
+                throw;
+            }
+            finally
+            {
+                if (acquiredLock) Monitor.Exit(MyLock);
+            }
+            //mutexObj.ReleaseMutex();
         }
         static void Main(string[] args)
         {
@@ -21,7 +41,7 @@
                 MyTread.Start(5);
                 //Test1();
             }
-            Console.ReadLine();
+            //Console.ReadLine();
             //Test1();
             //Test1();            
         }
